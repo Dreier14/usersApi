@@ -15,7 +15,7 @@ export const NavBar: React.FC = (): JSX.Element => {
                 </Navbar.Brand>
                 <Navbar.Brand href="/" className="base-text-color">Adam Dreier Portfolio</Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-                <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end">
+                <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end ">
                     {getNavLinks()}
                 </Navbar.Collapse>
             </Container>
