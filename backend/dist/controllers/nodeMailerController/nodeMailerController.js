@@ -1,15 +1,9 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.sendMail = void 0;
-const nodemailer_1 = __importDefault(require("nodemailer"));
-require("dotenv/config");
-const sendMail = (req, res, next) => {
+import nodemailer from "nodemailer";
+import "dotenv/config";
+export const sendMail = (req, res, next) => {
     const { NODE_MAILER_EMAIL, NODE_MAILER_PASS } = process.env;
     const { name, email, text } = req.body;
-    const transporter = nodemailer_1.default.createTransport({
+    const transporter = nodemailer.createTransport({
         service: "gmail",
         auth: {
             user: NODE_MAILER_EMAIL,
@@ -34,5 +28,4 @@ const sendMail = (req, res, next) => {
         }
     });
 };
-exports.sendMail = sendMail;
 //# sourceMappingURL=nodeMailerController.js.map

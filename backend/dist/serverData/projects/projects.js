@@ -1,7 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.projects = void 0;
-exports.projects = {
+export const projects = {
     WbExplorer: {
         Photo: "https://drive.google.com/uc?export=view&id=1lNsFmY6ZKV766BZR1It4p_Tt3J2btmsc",
         Info: "A site dedicated to helping backpackers traveling the world.",
