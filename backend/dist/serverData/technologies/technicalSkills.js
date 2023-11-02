@@ -1,4 +1,7 @@
-export const technicalSkills = {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.technicalSkills = void 0;
+exports.technicalSkills = {
     Languages: [
         "JavaScript",
         "TypeScript",
