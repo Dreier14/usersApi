@@ -16,7 +16,7 @@ export const sendMail = (req: Request, res: Response, next: NextFunction) => {
         },
     });
 
-    const message: Record<string, string> = {
+    const message: Record<string, string | undefined> = {
         from: email,
         to: NODE_MAILER_EMAIL,
         subject: "༜ Portfolio Inquiry ༜",
