@@ -7,7 +7,7 @@ import {
     IProjectsDictionary,
 } from "../Interfaces/index";
 
-const BASE_URL = {
+export const BASE_URL = {
     apiPath: import.meta.env.VITE_BASE_URL,
 };
 

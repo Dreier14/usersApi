@@ -20,7 +20,10 @@ export const sendMail = (req: Request, res: Response, next: NextFunction) => {
         from: email,
         to: NODE_MAILER_EMAIL,
         subject: "༜ Portfolio Inquiry ༜",
-        text: `${text} From, ${name}`,
+        text: `To Adam Dreier,
+                ${text} 
+                From, 
+                ${name}`,
     };
 
     transporter.sendMail(message, () => {

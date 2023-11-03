@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Button, Container, Form } from 'react-bootstrap';
-import { BASE_URL } from '../../DataStore/Urls';
 import axios from 'axios';
 import { contactStringResponses } from './ContactStrings';
+import { BASE_URL } from '../../DataStore/DataStore';
 
 export const Contact: React.FC = (): JSX.Element => {
     const [name, setName] = useState<string | undefined>(undefined);
@@ -21,7 +21,7 @@ export const Contact: React.FC = (): JSX.Element => {
             }
 
             setIsRequired(false);
-            axios.post(`${BASE_URL}/api/sendMail`, {
+            axios.post(`${BASE_URL.apiPath}/api/sendMail`, {
                 name,
                 email,
                 text
