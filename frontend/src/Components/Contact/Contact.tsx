@@ -12,7 +12,6 @@ export const Contact: React.FC = (): JSX.Element => {
     const [isRequired, setIsRequired] = useState<boolean>(false);
 
     const { okStatus, badStatus, allFieldsAreRequired } = contactStringResponses;
-    const showRequiredFields: string | null = isRequired ? '*' : null;
 
     const handleSendMessage = (): void => {
         try {

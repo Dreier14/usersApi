@@ -1,13 +1,15 @@
 import axios from "axios";
 import { action, makeObservable, observable } from "mobx";
-
-import { BASE_URL } from "./Urls";
 import {
     ITechnicalSkills,
     ITechnicalSkillsDictionary,
     IProjects,
     IProjectsDictionary,
 } from "../Interfaces/index";
+
+const BASE_URL = {
+    apiPath: import.meta.env.VITE_BASE_URL,
+};
 
 export class DataStore {
     @observable isLoading: boolean = true;
@@ -48,7 +50,7 @@ export class DataStore {
             this.setIsLoading(true);
             // We could create a helper function to also get the endpoint and configure it depending on the environment.
             const response: ITechnicalSkills = await axios.get(
-                `${BASE_URL}/api/getTechnicalSkills`
+                `${BASE_URL.apiPath}/api/getTechnicalSkills`
             );
 
             this.setTechnicalSkills(response.data.technicalSkills);
@@ -67,7 +69,7 @@ export class DataStore {
             this.setIsLoading(true);
             // We could create a helper function to also get the endpoint and configure it depending on the environment.
             const response: IProjects = await axios.get(
-                `${BASE_URL}/api/getProjects`
+                `${BASE_URL.apiPath}/api/getProjects`
             );
             this.setProjects(response.data.projects);
         } catch (e: any) {
