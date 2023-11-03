@@ -9,7 +9,7 @@ const app: Express = express();
 
 app.use(
     cors({
-        origin: "*",
+        origin: "https://adamdreier.vercel.app",
     }),
     express.json()
 );
