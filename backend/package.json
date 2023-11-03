@@ -1,7 +1,7 @@
 {
     "name": "adam-resume-backend",
     "version": "1.0.0",
-    "description": "backend-for-adams-resume",
+    "description": "Backend for Adams Resume Portfolio",
     "main": "server/index.ts",
     "scripts": {
         "start": "ts-node server/index.ts",
