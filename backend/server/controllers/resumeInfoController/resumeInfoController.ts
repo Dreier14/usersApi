@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
-import { technicalSkills } from "../../serverData/technologies/technicalSkills.js";
-import { projects } from "../../serverData/projects/projects.js";
+import { technicalSkills } from "../../serverData/technologies/technicalSkills";
+import { projects } from "../../serverData/projects/projects";
 
 export const getAllTechnicalSkills = async (
     req: Request,
