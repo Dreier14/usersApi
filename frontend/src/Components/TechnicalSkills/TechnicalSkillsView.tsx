@@ -3,7 +3,6 @@ import { ITechnicalSkillsDictionary } from "../../Interfaces/ITechnicalSkills";
 import { spaceWordsWithCapitalLetter } from "../../Helpers/StringHelpers";
 
 import "../../App.scss";
-import "./TechnicalSkillsView.scss";
 
 export const TechnicalSkillsView: React.FC<ITechnicalSkillsDictionary> = (technicalSkillsData: ITechnicalSkillsDictionary): JSX.Element => {
     const renderTechnicalSkills = (technicalSkillsData: ITechnicalSkillsDictionary) => {
@@ -11,17 +10,17 @@ export const TechnicalSkillsView: React.FC<ITechnicalSkillsDictionary> = (techni
             Object.entries(technicalSkillsData)
                 .map(([key, value]) =>
                     <>
-                        <Col xs={6} md={6} lg={4}>
+                        <Col xs={6} md={6} lg={4} style={{ textAlign: "center" }}>
                             <h3 style={{ textDecoration: "underline" }}>{spaceWordsWithCapitalLetter(key)}</h3>
-                            {
-                                value.map((e, i) => {
-                                    return (
-                                        <ListGroup key={i} variant="flush" >
-                                            <ListGroup.Item className="list-item-config" key={e} as="li">{e}</ListGroup.Item>
-                                        </ListGroup>
-                                    );
-                                })
-                            }
+                            <ListGroup key={key} variant="flush" >
+                                {
+                                    value.map((e) => {
+                                        return (
+                                            <ListGroup.Item style={{ textAlign: "center" }} className="list-item-config" key={e} as="li">{e}</ListGroup.Item>
+                                        );
+                                    })
+                                }
+                            </ListGroup>
                             <br />
                         </Col>
                     </>

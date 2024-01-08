@@ -21,7 +21,7 @@ export const getContactInfo = (): JSX.Element => {
     return (
         <>
             <h1>Adam Dreier</h1>
-            <h3>Sr. Full Stack Software Engineer</h3>
+            <h3>Lead Full Stack Software Engineer</h3>
             <a className='links base-text-color' href='mailto:adamdreier1@gmail.com'>adamdreier1@gmail.com </a>
             <br />
             <a className='links base-text-color' href='tel:6317037453'>631-703-7453</a>

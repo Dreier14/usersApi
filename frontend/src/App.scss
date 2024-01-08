@@ -6,6 +6,7 @@
 .list-item-config {
     background: none !important ;
     color: azure !important;
+    border: none !important;
 }
 
 .base-text-color {
@@ -13,5 +14,11 @@
 }
 
 .custom-color-config {
-    background: linear-gradient(to right, #434343 0%, black 100%);
+    --bs-bg-opacity: none !important;
+    --bs-card-bg: none !important;
+}
+
+.btn-secondary {
+    --bs-btn-bg: none !important;
+    --bs-btn-disabled-bg: none !important;
 }

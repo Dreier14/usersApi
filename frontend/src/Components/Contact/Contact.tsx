@@ -9,18 +9,26 @@ export const Contact: React.FC = (): JSX.Element => {
     const [email, setEmailAddress] = useState<string | undefined>(undefined);
     const [text, setEmailText] = useState<string | undefined>(undefined);
     const [statusMessage, setStatusMessage] = useState<JSX.Element | undefined>(undefined);
-    const [isRequired, setIsRequired] = useState<boolean>(false);
+    const [validated, setValidated] = useState(false);
 
-    const { okStatus, badStatus, allFieldsAreRequired } = contactStringResponses;
+    const { okStatus, badStatus } = contactStringResponses;
+
+    const handleSubmit = (event: { currentTarget: any; preventDefault: () => void; stopPropagation: () => void; }) => {
+        const form = event.currentTarget;
+        if (form.checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+        }
+
+        setValidated(true);
+
+        if (validated) {
+            handleSendMessage();
+        }
+    };
 
     const handleSendMessage = (): void => {
         try {
-            if (!name || !email || !text) {
-                setIsRequired(true);
-                return;
-            }
-
-            setIsRequired(false);
             axios.post(`${BASE_URL.apiPath}/api/sendMail`, {
                 name,
                 email,
@@ -54,24 +62,32 @@ export const Contact: React.FC = (): JSX.Element => {
             <Container>
                 <br />
                 {statusMessage}
-                {isRequired ? allFieldsAreRequired : null}
                 <br />
-                <Form>
+                <Form noValidate validated={validated} onSubmit={handleSubmit}>
                     <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                        <Form.Label>Name:*</Form.Label>
-                        <Form.Control type="name" placeholder="Enter your name" required onChange={(e) => setName(e.currentTarget.value)} value={name || ''} />
+                        <Form.Label>Name:</Form.Label>
+                        <Form.Control type="name" placeholder="Enter your name" required onChange={(e) => setName(e.currentTarget.value)} value={name} />
+                        <Form.Control.Feedback type="invalid">
+                            Please provide a valid name.
+                        </Form.Control.Feedback>
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                        <Form.Label>Email Address:*</Form.Label>
-                        <Form.Control type="email" placeholder="Enter your email" required onChange={(e) => setEmailAddress(e.currentTarget.value)} value={email || ''} />
+                        <Form.Label>Email Address:</Form.Label>
+                        <Form.Control type="email" placeholder="Enter your email" required onChange={(e) => setEmailAddress(e.currentTarget.value)} value={email} />
+                        <Form.Control.Feedback type="invalid">
+                            Please provide a valid email.
+                        </Form.Control.Feedback>
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-                        <Form.Label>Message:*</Form.Label>
-                        <Form.Control as="textarea" rows={7} placeholder="Enter your message" required onChange={(e) => setEmailText(e.currentTarget.value)} value={text || ''} />
+                        <Form.Label>Message:</Form.Label>
+                        <Form.Control as="textarea" rows={7} placeholder="Enter your message" required onChange={(e) => setEmailText(e.currentTarget.value)} value={text} />
+                        <Form.Control.Feedback type="invalid">
+                            Please enter a message.
+                        </Form.Control.Feedback>
                     </Form.Group>
                 </Form>
                 <br />
-                <Button variant="primary" onClick={() => handleSendMessage()}>Send Message</Button>
+                <Button variant="secondary" type="submit">Send Message</Button>
             </Container>
         </>
     );

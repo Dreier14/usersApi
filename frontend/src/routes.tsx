@@ -8,6 +8,7 @@ import { Contact } from './Components/Contact/Contact';
 import { Footer } from './Components/Footer/Footer';
 import { ParticlesBackground } from './Components/ParticlesBackground/ParticlesBackground';
 import { ResumeViewer } from './Components/ResumeViewer/ResumeViewer';
+import { TechnicalSkills } from './Components/TechnicalSkills/TechnicalSkills';
 
 // import { Error } from './Components/Error/Error';
 
@@ -22,6 +23,7 @@ export default (
         <div className='app-body'>
             <Routes>
                 <Route path='/' element={<Home store={store} />} />
+                <Route path='/skills' element={<TechnicalSkills store={store} />} />
                 <Route path='/projects' element={<Projects store={store} />} />
                 <Route path='/contact' element={<Contact />} />
                 <Route path='/resume' element={<ResumeViewer />} />
