@@ -17,7 +17,7 @@ export const getChatGptResponse = async (
     try {
         const chatCompletion = await openai.chat.completions.create({
             messages: [{ role: "user", content: prompt }],
-            model: "gpt-4",
+            model: "gpt-3.5-turbo-16k-0613",
         });
         res.status(200).json({ chatCompletion });
     } catch (error: unknown) {
