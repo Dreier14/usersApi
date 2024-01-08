@@ -14,6 +14,7 @@ export const getChatGptResponse = async (
     next: NextFunction
 ): Promise<void> => {
     const { prompt } = req.body;
+    console.log(prompt);
     try {
         const chatCompletion = await openai.chat.completions.create({
             messages: [{ role: "user", content: prompt }],
