@@ -24,7 +24,6 @@ export const Contact: React.FC = (): JSX.Element => {
 
         if (validated) {
             handleSendMessage();
-            setValidated(false);
         }
     };
 
@@ -39,6 +38,7 @@ export const Contact: React.FC = (): JSX.Element => {
                 res.status === 200 ?
                     setStatusMessage(okStatus) : setStatusMessage(badStatus);
                 clearStatusMessage();
+                setValidated(false);
             });
         } catch (error: unknown) {
             setStatusMessage(badStatus);
