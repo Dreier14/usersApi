@@ -24,6 +24,7 @@ export const Contact: React.FC = (): JSX.Element => {
 
         if (validated) {
             handleSendMessage();
+            setValidated(false);
         }
     };
 
@@ -85,9 +86,9 @@ export const Contact: React.FC = (): JSX.Element => {
                             Please enter a message.
                         </Form.Control.Feedback>
                     </Form.Group>
+                    <br />
+                    <Button variant="secondary" type="submit">Send Message</Button>
                 </Form>
-                <br />
-                <Button variant="secondary" type="submit">Send Message</Button>
             </Container>
         </>
     );
