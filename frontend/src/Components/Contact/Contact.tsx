@@ -15,16 +15,14 @@ export const Contact: React.FC = (): JSX.Element => {
 
     const handleSubmit = (event: { currentTarget: any; preventDefault: () => void; stopPropagation: () => void; }) => {
         const form = event.currentTarget;
+
         if (form.checkValidity() === false) {
             event.preventDefault();
             event.stopPropagation();
         }
 
+        handleSendMessage();
         setValidated(true);
-
-        if (validated) {
-            handleSendMessage();
-        }
     };
 
     const handleSendMessage = (): void => {
@@ -34,11 +32,11 @@ export const Contact: React.FC = (): JSX.Element => {
                 email,
                 text
             }).then(res => {
-                setDefaultState();
+                console.log(res)
                 res.status === 200 ?
                     setStatusMessage(okStatus) : setStatusMessage(badStatus);
+                setDefaultState();
                 clearStatusMessage();
-                setValidated(false);
             });
         } catch (error: unknown) {
             setStatusMessage(badStatus);

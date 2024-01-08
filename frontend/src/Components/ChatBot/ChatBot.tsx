@@ -1,15 +1,12 @@
 import { useState } from "react"
-import { OpenAI } from "openai";
 import { Button, Form, InputGroup } from "react-bootstrap";
+import axios from "axios";
+
+import { BASE_URL } from '../../DataStore/DataStore';
 
 const styles = { width: "75%", margin: "auto", display: "block" };
 
 export const ChatBot = () => {
-    const openai = new OpenAI({
-        apiKey: import.meta.env.VITE_OPEN_AI_API,
-        dangerouslyAllowBrowser: true,
-    });
-
     const [prompt, setPrompt] = useState<string>("");
     const [apiResponse, setApiResponse] = useState<string | null>("");
     const [loading, setLoading] = useState<boolean>(false);
@@ -18,12 +15,8 @@ export const ChatBot = () => {
         e.preventDefault();
         setLoading(true);
         try {
-            const chatCompletion = await openai.chat.completions.create({
-                messages: [{ role: 'user', content: prompt }],
-                model: 'gpt-3.5-turbo',
-            });
-
-            setApiResponse(chatCompletion.choices[0].message.content);
+            const response = await axios.post(`${BASE_URL.apiPath}/api/getChatGptResponse`, { prompt })
+            setApiResponse(response.data.chatCompletion.choices[0].message.content);
         } catch (e) {
             setApiResponse("Something is going wrong, Please try again.");
         }
