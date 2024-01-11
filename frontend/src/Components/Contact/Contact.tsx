@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useForm } from 'react-hook-form';
 import { Button, Container, Form } from 'react-bootstrap';
 import axios from 'axios';
 import { contactStringResponses } from './ContactStrings';
