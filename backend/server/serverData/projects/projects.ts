@@ -11,7 +11,7 @@ interface Projects {
 
 export const projects: Projects = {
     WbExplorer: {
-        Photo: "https://lh3.google.com/u/0/d/1lNsFmY6ZKV766BZR1It4p_Tt3J2btmsc",
+        Photo: "https://drive.google.com/uc?export=view&id=1lNsFmY6ZKV766BZR1It4p_Tt3J2btmsc",
         Info: "A site dedicated to helping backpackers traveling the world.",
         Details: [
             "Implemented the REST methodology via Node JS, using axios calls to the database to update, delete, create and read data using PostgreSQL.",
@@ -38,7 +38,7 @@ export const projects: Projects = {
         IsDeployed: "Currently Not Deployed",
     },
     AdventureProject: {
-        Photo: "https://lh3.google.com/u/0/d/1eKpE72p81j7vU7e8f5wjBYUgfqURGAOx",
+        Photo: "https://drive.google.com/uc?export=view&id=1eKpE72p81j7vU7e8f5wjBYUgfqURGAOx",
         Info: "An application that provides hikers with trails and info.",
         Details: [
             "Implemented the REST methodology, via Node JS. Used axios to make calls to the database to update, delete, create,and read data using PostgreSQL.",
@@ -64,7 +64,7 @@ export const projects: Projects = {
         IsDeployed: "Currently Not Deployed",
     },
     AquaticNWritingRehab: {
-        Photo: "https://lh3.google.com/u/0/d/1sCd5_b6XUfZv9Ke6TCIkKfNIKR-beXv2",
+        Photo: "https://drive.google.com/uc?export=view&id=1sCd5_b6XUfZv9Ke6TCIkKfNIKR-beXv2",
         Info: "An application for a children's rehab facility specializing in aquatics.",
         Details: [
             "Implementing bootstrap designs and semantic UI elements to make responsive web design.",
