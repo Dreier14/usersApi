@@ -1,5 +1,6 @@
 import express, { Express } from "express";
 import cors from "cors";
+import "dotenv/config";
 
 import * as resumeController from "./controllers/resumeInfoController/resumeInfoController";
 import * as nodeMailerController from "./controllers/nodeMailerController/nodeMailerController";
@@ -10,7 +11,7 @@ const app: Express = express();
 
 app.use(
     cors({
-        origin: "https://adamdreier.vercel.app",
+        origin: `${process.env.NODE_FRONTEND_URL}`,
     }),
     express.json()
 );

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useForm } from 'react-hook-form';
 import { Button, Container, Form } from 'react-bootstrap';
 import axios from 'axios';
 import { contactStringResponses } from './ContactStrings';
@@ -21,21 +22,22 @@ export const Contact: React.FC = (): JSX.Element => {
             event.stopPropagation();
         }
 
-        handleSendMessage();
+        handleSendMessage(event);
         setValidated(true);
     };
 
-    const handleSendMessage = (): void => {
+    const handleSendMessage = (e: { currentTarget?: any; preventDefault: any; stopPropagation?: () => void; }): void => {
+        e.preventDefault();
         try {
             axios.post(`${BASE_URL.apiPath}/api/sendMail`, {
                 name,
                 email,
                 text
             }).then(res => {
-                console.log(res)
                 res.status === 200 ?
                     setStatusMessage(okStatus) : setStatusMessage(badStatus);
                 setDefaultState();
+                setValidated(false);
                 clearStatusMessage();
             });
         } catch (error: unknown) {
@@ -45,22 +47,24 @@ export const Contact: React.FC = (): JSX.Element => {
     }
 
     const setDefaultState = () => {
-        setName(undefined);
-        setEmailAddress(undefined);
-        setEmailText(undefined);
+        setName('');
+        setEmailAddress('');
+        setEmailText('');
     }
 
     const clearStatusMessage = () => {
         setTimeout(() => {
             setStatusMessage(undefined)
-        }, 3000)
+        }, 5000)
     }
 
     return (
         <>
             <Container>
                 <br />
-                {statusMessage}
+                <div style={{ textAlign: 'center' }}>
+                    {statusMessage}
+                </div>
                 <br />
                 <Form noValidate validated={validated} onSubmit={handleSubmit}>
                     <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">

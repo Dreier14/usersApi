@@ -1,4 +1,8 @@
-export const technicalSkills: { [key: string]: Array<string> } = {
+interface TechnicalSkills {
+    [key: string]: Array<string>;
+}
+
+export const technicalSkills: TechnicalSkills = {
     Languages: [
         "JavaScript",
         "TypeScript",
