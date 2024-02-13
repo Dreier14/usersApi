@@ -2,28 +2,26 @@ import express, { Express } from "express";
 import cors from "cors";
 import "dotenv/config";
 
-import * as resumeController from "./controllers/resumeInfoController/resumeInfoController";
-import * as nodeMailerController from "./controllers/nodeMailerController/nodeMailerController";
-import * as chatGptController from "./controllers/chatGptController/chatGptController";
+import { getUser, getAllUsers } from "./controllers/userController/read/getUser";
+import { deleteUser } from "./controllers/userController/delete/deleteUser";
+import { editUser } from "./controllers/userController/update/updateUser";
+import { createUser } from "./controllers/userController/create/createUser";
 
 const app: Express = express();
-const { NODE_FRONTEND_URL, NODE_PORT } = process.env;
+const { NODE_PORT } = process.env;
 
-console.log();
+// Get/Read Methods
+app.get('/api/user/:id', getUser);
+app.get('/api/allUsers', getAllUsers);
 
-app.use(
-    cors({
-        origin: `${NODE_FRONTEND_URL}`,
-    }),
-    express.json()
-);
+// Create
+app.post('/api/newUser', createUser);
 
 // Get Methods
-app.get("/api/getTechnicalSkills", resumeController.getAllTechnicalSkills);
-app.get("/api/getProjects", resumeController.getAllProjects);
+app.put('/api/updateUser/:id', editUser);
 
-app.post("/api/sendMail", nodeMailerController.sendMail);
-app.post("/api/getChatGptResponse", chatGptController.getChatGptResponse);
+// Get Methods
+app.delete('/api/deleteUser/:id', deleteUser);
 
 app.listen(NODE_PORT, () => {
     console.log(`Server is running on port ${NODE_PORT}🚀`);

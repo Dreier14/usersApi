@@ -1,7 +1,7 @@
 {
-    "name": "adam-resume-backend",
+    "name": "user-abstraction-backend",
     "version": "1.0.0",
-    "description": "Backend for Adams Resume Portfolio",
+    "description": "Backend for API User",
     "main": "server/index.ts",
     "scripts": {
         "start": "ts-node server/index.ts",
